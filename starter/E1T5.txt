@@ -4,5 +4,5 @@ Based on the architecture diagram, and the steps you have taken so far to upload
 Gateway VPC Endpoint for S3 should be used to simplify access to S3 resources from within a VPC. Prior to the introduction of endpoints, VPC resources had to go out to the internet to communicate with S3. This poses a potential security and availability risk, and complicates infrastructure architecture. 
 
 # Poor practice 2
-In the configuration of c3-app.yml, Port 5000 is used for AppTargetGroup. This TCP port is opened and used by Universal Plug N' Play (UPnP) devices to accept incoming connections from other UPnP devices. UPnP devices connect to each other using TCP protocol over port 5000. This protocol has significant security problems, especially on older Windows versions. We should either block port 5000 from incoming traffic (and perhaps outgoing as well), or disable UPnP on all of our system.
+In the configuration of c3-app.yml, Port 5000 is used for AppTargetGroup. This TCP port is opened and used by Universal Plug N' Play (UPnP) devices to accept incoming connections from other UPnP devices. This protocol has significant security problems, especially on older Windows versions. We should either block port 5000 from incoming traffic (and perhaps outgoing as well), or disable UPnP on all of our system.
 
