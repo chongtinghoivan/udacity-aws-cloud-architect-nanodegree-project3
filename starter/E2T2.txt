@@ -1,3 +1,25 @@
 Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
 
-Bonus - provide recommendations on how to remediate the vulnerabilities.
+(Bonus - provide recommendations on how to remediate the vulnerabilities.)
+
+
+From AWS Config, the following insights and recommendations were collected:
+- EC2 instances should be managed by AWS Systems Manager.
+- Checks whether the incoming SSH traffic for the security groups is accessible. The rule is compliant when the IP addresses of the incoming SSH traffic in the security groups are restricted. This rule applies only to IPv4.
+- Checks whether the default security group for VPC is closed.
+- Checks that your Amazon S3 bucket either has Amazon S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption.
+- Checks whether logging is enabled for your S3 buckets.
+
+
+From AWS Inspector, the following potential security issues were discovered and found to be of high severity on instance i-038096b79b98b1a93 (Web Service Instance - C3):
+- UDP port 23 which is associated with 'Telnet' is reachable from the internet
+- TCP port 20 which is associated with 'FTP' is reachable from the internet
+- TCP port 21 which is associated with 'FTP' is reachable from the internet
+- TCP port 23 which is associated with 'Telnet' is reachable from the internet
+- UDP port 21 which is associated with 'FTP' is reachable from the internet
+- UDP port 20 which is associated with 'FTP' is reachable from the internet
+
+According to the recommendations by the AWS Inspector, it was advised to edit the Security Group sg-09b7b1fc6c31716ee (WebAppSG) to remove access from the internet on port 20, 21 and 23. 
+
+Since Security Group supports 'allow' rules only, I would therefore consider adding Network ACL inbound rules at the subnet level to deny traffic from these ports. 
+
