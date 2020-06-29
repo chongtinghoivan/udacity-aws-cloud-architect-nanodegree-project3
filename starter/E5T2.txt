@@ -1,13 +1,22 @@
 # Identify tools that will allow you to do the following:
 
-## Scan infrastructure as code templates
+## Scan infrastructure as code templates:
+Terrascan (https://github.com/accurics/terrascan)
 
-### Example vulnerability
+### Example vulnerability: 
+- Server Side Encryption (SSE) not enabled
+- Access logs not enabled to resources that support it
 
-##Scan AMI’s or containers for OS vulnerabilities
+##Scan AMI’s or containers for OS vulnerabilities:
+AWS Inspector
 
-### Example vulnerability
+### Example vulnerability:
+- Common vulnerabilities and exposures or CVE findings
 
-##Scan an AWS environment for cloud configuration vulnerabilities
+##Scan an AWS environment for cloud configuration vulnerabilities:
+AWS Config
 
-### Example vulnerability
+### Example vulnerability:
+- An IAM role assigned a policy that allows admin access.
+- Disk storage has been provisioned without volume encryption enabled.
+- A server instance has been created and configured to allow RDP connections from the public internet.

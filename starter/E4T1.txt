@@ -2,4 +2,15 @@
 
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
 
+1. Disable SSH password login on the application server instance
+2. Update the security group which is assigned to the web application instance. Only allow connections to port 5000 from the public subnet where the application load balancer resides.
+
+
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+1. Implement least privilege access
+Currently the IAM Role c3-app-InstanceRole has a permission policy "InstanceRolePolicy-C3" attached, which grants the role full access to all resources of S3. The policy should be edited by limiting the access to only the free recipes bucket.
+
+2. Apply Default Server-side Encryption to the S3 Bucket
+Server-side encryption could be enabled on the secret recipes bucket. 
+Amazon S3 default encryption provides a way to set the default encryption behaviour for an S3 bucket. We can set default encryption on a bucket so that all new objects are encrypted when they are stored in the bucket. The objects are encrypted using server-side encryption with either Amazon S3-managed keys (SSE-S3) or customer master keys (CMKs) stored in AWS Key Management Service (AWS KMS).

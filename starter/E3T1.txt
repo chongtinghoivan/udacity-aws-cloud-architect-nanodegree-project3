@@ -1,3 +1,14 @@
 # Describe GuardDuty findings that were detected related to the brute force attack
 
+Sadly, AWS GuardDuty could not detect the brute force attack after trying for a whole day.
+I have documented my struggles in a Udacity Knowledge question which you may refer to through the link below:
+https://knowledge.udacity.com/questions/254673
+
+Although no AWS GuardDuty detection has been observed, I decided not to wait longer and I would proceed and finish the other tasks seeing the CloudWatch metrics showing the attacking instance being triggered properly.
+
+I apology for not being able to attach and submit the E3T1_guardduty.png due to the above frustration I had with AWS GuardDuty.
+
 # Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+
+According to the AWS Guard Duty documentation page, GuardDuty analyses and processes data from AWS CloudTrail event logs, VPC Flow Logs, and DNS logs. For detection of brute force attack, GuardDuty should be using VPC Flow Logs.
+
